@@ -96,7 +96,13 @@ export class Installer {
 
     const assetExtractedFolder = await tc.extractTar(dest)
     core.debug(`Cached @ ${assetExtractedFolder} for tag ${this.cfg.tag}`)
-    return await tc.cacheDir(assetExtractedFolder, cacheKey, this.cfg.tag)
+    const installedDir = await tc.cacheDir(
+      assetExtractedFolder,
+      cacheKey,
+      this.cfg.tag
+    )
+    core.addPath(installedDir)
+    return installedDir
   }
 }
 

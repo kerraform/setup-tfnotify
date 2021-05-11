@@ -114,7 +114,9 @@ class Installer {
             core.debug(`Download asset: ${asset.name}`);
             const assetExtractedFolder = yield tc.extractTar(dest);
             core.debug(`Cached @ ${assetExtractedFolder} for tag ${this.cfg.tag}`);
-            return yield tc.cacheDir(assetExtractedFolder, cacheKey, this.cfg.tag);
+            const installedDir = yield tc.cacheDir(assetExtractedFolder, cacheKey, this.cfg.tag);
+            core.addPath(installedDir);
+            return installedDir;
         });
     }
 }
