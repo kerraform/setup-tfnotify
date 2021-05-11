@@ -6,6 +6,10 @@ inputs:
     required: false
     description: 'Which release to install'
     default: 'latest'
+  token:
+    required: false
+    description: 'Credential to access to the repo to post the comment'
+    default: ${{ github.token }}
 runs:
   using: 'node12'
   main: 'dist/index.js'
