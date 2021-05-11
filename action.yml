@@ -1,0 +1,14 @@
+name: 'setup-tfnotify'
+description: 'Install kerraform/tfnotify in your workflow'
+author: 'KeisukeYamashita'
+inputs:
+  tag: 
+    required: false
+    description: 'Which release to install'
+    default: 'latest'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'git-merge'
+  color: 'purple'
