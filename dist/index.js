@@ -59,7 +59,10 @@ class Installer {
     }
     isTargetAsset(asset) {
         const { name } = asset;
-        return name.includes(os_1.default.platform()) && name.includes(os_1.default.arch());
+        const osPlatform = os_1.default.platform();
+        const osArch = os_1.default.arch();
+        core.debug(`checking if ${name} matches platform ${osPlatform} and architecture ${osArch}`);
+        return name.includes(osPlatform) && name.includes(osArch);
     }
     getTfnotify() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -92,12 +95,13 @@ class Installer {
             const asset = assets.find((a) => this.isTargetAsset(a));
             if (!asset) {
                 core.debug(`Cound not find asset ${util_1.inspect(this.cfg)}`);
-                core.debug(`Asset count:${assets}`);
+                core.debug(`Assets count:${assets.length} got from release`);
                 core.setOutput('matched', false);
                 throw new Error('Cound not find asset');
             }
             core.setOutput('asset-id', asset.id);
             core.setOutput('asset-name', asset.name);
+            core.setOutput(`tag`, this.cfg.tag);
             const dest = `/tmp/${uuid_1.v4()}`;
             yield pipeline(got_1.default.stream(asset.url, {
                 method: 'GET',

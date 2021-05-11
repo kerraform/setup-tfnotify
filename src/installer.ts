@@ -29,7 +29,12 @@ export class Installer {
 
   private isTargetAsset(asset: Asset): boolean {
     const {name} = asset
-    return name.includes(os.platform()) && name.includes(os.arch())
+    const osPlatform = os.platform()
+    const osArch = os.arch()
+    core.debug(
+      `checking if ${name} matches platform ${osPlatform} and architecture ${osArch}`
+    )
+    return name.includes(osPlatform) && name.includes(osArch)
   }
 
   async getTfnotify(): Promise<string> {
@@ -64,13 +69,14 @@ export class Installer {
     const asset = assets.find((a: Asset) => this.isTargetAsset(a))
     if (!asset) {
       core.debug(`Cound not find asset ${inspect(this.cfg)}`)
-      core.debug(`Asset count:${assets}`)
+      core.debug(`Assets count:${assets.length} got from release`)
       core.setOutput('matched', false)
       throw new Error('Cound not find asset')
     }
 
     core.setOutput('asset-id', asset.id)
     core.setOutput('asset-name', asset.name)
+    core.setOutput(`tag`, this.cfg.tag)
 
     const dest = `/tmp/${uuidv4()}`
 
