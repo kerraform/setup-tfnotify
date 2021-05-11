@@ -2,10 +2,18 @@ name: Install
 on: pull_request
 
 jobs:
-  install:
+  install-ubuntu:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ./
       - name: Check version
-        run: tfnotify version
+        run: tfnotify --version
+  
+  install-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+      - name: Check version
+        run: tfnotify --version
