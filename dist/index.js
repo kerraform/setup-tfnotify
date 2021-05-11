@@ -60,7 +60,7 @@ class Installer {
     isTargetAsset(asset) {
         const { name } = asset;
         const osPlatform = os_1.default.platform();
-        const osArch = os_1.default.arch();
+        const osArch = os_1.default.arch() === 'x64' ? 'amd64' : os_1.default.arch();
         core.debug(`checking if ${name} matches platform ${osPlatform} and architecture ${osArch}`);
         return name.includes(osPlatform) && name.includes(osArch);
     }

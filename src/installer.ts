@@ -30,7 +30,7 @@ export class Installer {
   private isTargetAsset(asset: Asset): boolean {
     const {name} = asset
     const osPlatform = os.platform()
-    const osArch = os.arch()
+    const osArch = os.arch() === 'x64' ? 'amd64' : os.arch()
     core.debug(
       `checking if ${name} matches platform ${osPlatform} and architecture ${osArch}`
     )
