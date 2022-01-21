@@ -54,7 +54,7 @@ const cacheKey = 'tfnotify';
 class Installer {
     constructor(cfg) {
         this.cfg = cfg;
-        this.owner = 'kerraform';
+        this.owner = 'mercari';
         this.repo = 'tfnotify';
     }
     isTargetAsset(asset) {
