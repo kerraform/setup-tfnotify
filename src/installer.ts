@@ -1,9 +1,9 @@
 import * as github from '@actions/github'
 import * as core from '@actions/core'
-import {components} from '@octokit/openapi-types'
-import {inspect, promisify} from 'util'
+import { components } from '@octokit/openapi-types'
+import { inspect, promisify } from 'util'
 import * as tc from '@actions/tool-cache'
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import got from 'got'
 import * as stream from 'stream'
 import os from 'os'
@@ -22,13 +22,13 @@ export interface Inputs {
 }
 
 export class Installer {
-  private owner = 'kerraform'
+  private owner = 'mercari'
   private repo = 'tfnotify'
 
-  constructor(private cfg: Inputs) {}
+  constructor(private cfg: Inputs) { }
 
   private isTargetAsset(asset: Asset): boolean {
-    const {name} = asset
+    const { name } = asset
     const osPlatform = os.platform()
     const osArch = os.arch() === 'x64' ? 'amd64' : os.arch()
     core.debug(
