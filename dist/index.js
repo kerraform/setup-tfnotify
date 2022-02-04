@@ -94,10 +94,10 @@ class Installer {
             }
             const asset = assets.find((a) => this.isTargetAsset(a));
             if (!asset) {
-                core.debug(`Cound not find asset ${util_1.inspect(this.cfg)}`);
+                core.debug(`Could not find asset ${util_1.inspect(this.cfg)}`);
                 core.debug(`Assets count:${assets.length} got from release`);
                 core.setOutput('matched', false);
-                throw new Error('Cound not find asset');
+                throw new Error('Could not find asset');
             }
             core.setOutput('asset-id', asset.id);
             core.setOutput('asset-name', asset.name);
@@ -173,10 +173,10 @@ function run() {
                 token: core.getInput('token', { required: true }),
                 latest: core.getInput('tag') === 'latest'
             };
-            core.info(`Setup kerraform/tfnotify ${inputs.tag} version`);
+            core.info(`Setup mercari/tfnotify ${inputs.tag} version`);
             const installer = new installer_1.Installer(inputs);
             const installedDir = yield installer.getTfnotify();
-            core.info(`Installed kerraform/tfnotify in ${installedDir}`);
+            core.info(`Installed mercari/tfnotify in ${installedDir}`);
             core.debug(`Inputs: ${util_1.inspect(inputs)}`);
         }
         catch (error) {

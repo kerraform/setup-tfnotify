@@ -10,11 +10,11 @@ async function run(): Promise<void> {
       latest: core.getInput('tag') === 'latest'
     }
 
-    core.info(`Setup kerraform/tfnotify ${inputs.tag} version`)
+    core.info(`Setup mercari/tfnotify ${inputs.tag} version`)
 
     const installer = new Installer(inputs)
     const installedDir = await installer.getTfnotify()
-    core.info(`Installed kerraform/tfnotify in ${installedDir}`)
+    core.info(`Installed mercari/tfnotify in ${installedDir}`)
 
     core.debug(`Inputs: ${inspect(inputs)}`)
   } catch (error) {
