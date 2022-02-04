@@ -68,10 +68,10 @@ export class Installer {
 
     const asset = assets.find((a: Asset) => this.isTargetAsset(a))
     if (!asset) {
-      core.debug(`Cound not find asset ${inspect(this.cfg)}`)
+      core.debug(`Could not find asset ${inspect(this.cfg)}`)
       core.debug(`Assets count:${assets.length} got from release`)
       core.setOutput('matched', false)
-      throw new Error('Cound not find asset')
+      throw new Error('Could not find asset')
     }
 
     core.setOutput('asset-id', asset.id)
