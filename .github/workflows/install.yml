@@ -9,7 +9,17 @@ jobs:
       - uses: ./
       - name: Check version
         run: tfnotify --version
-  
+
+  install-specific-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          tag: v0.7.0
+      - name: Check version
+        run: tfnotify --version
+
   install-macos:
     runs-on: macos-latest
     steps:
