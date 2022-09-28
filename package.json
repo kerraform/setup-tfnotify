@@ -28,7 +28,7 @@
         "@actions/github": "^4.0.0",
         "@actions/tool-cache": "^1.6.1",
         "@octokit/openapi-types": "^7.0.0",
-        "@octokit/types": "^5.5.0",
+        "@octokit/types": "^7.5.1",
         "@octokit/webhooks": "^7.21.0",
         "dayjs": "^1.10.3",
         "got": "^11.8.5",
